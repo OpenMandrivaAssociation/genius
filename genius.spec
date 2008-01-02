@@ -8,6 +8,7 @@ Release:	%{release}
 License:	GPL
 Group:		Sciences/Mathematics
 URL:		http://www.jirka.org/genius.html
+Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 Source:		http://ftp.5z.com/pub/%{name}/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-0.5.5-plugin-libtool-flag.patch.bz2
