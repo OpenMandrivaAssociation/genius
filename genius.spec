@@ -54,18 +54,6 @@ autoreconf --force --install
 rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
 
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat > $RPM_BUILD_ROOT%{_menudir}/%{name} <<_EOF_
-?package(%{name}): \
-command="%{_bindir}/genius" \
-icon="mathematics_section.png" \
-longtitle="Genius Mathematical Tool and Calculator" \
-needs="x11" \
-section="More Applications/Sciences/Mathematics" \
-title="Genius math tool" \
-startup_notify="yes" \
-xdg="true"
-_EOF_
 
 desktop-file-install --vendor="" \
   --remove-category="Application" \
@@ -118,6 +106,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/apps/gnome-genius.png
 %{_libdir}/%{name}
 %{_libexecdir}/genius-readline-helper-fifo
-%{_menudir}/%{name}
 %{_datadir}/applications/*
 
