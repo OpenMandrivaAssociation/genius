@@ -76,19 +76,23 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/genius/*.a \
 
 rm -rf %{buildroot}/%{_datadir}/mime/{XMLnamespaces,globs,magic,text,subclasses,aliases,mime.cache}  %{buildroot}/var/lib/scrollkeeper
 
+%if %mdkversion < 200900
 %post
 %update_menus
 %update_mime_database
 %update_desktop_database
 %update_scrollkeeper
 %update_icon_cache hicolor
+%endif
 
+%if %mdkversion < 200900
 %postun
 %clean_menus
 %clean_mime_database
 %clean_desktop_database
 %clean_scrollkeeper
 %clean_icon_cache hicolor
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
