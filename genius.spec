@@ -1,36 +1,32 @@
-%define version 0.7.6.1
-%define release %mkrel 3
+%define version 1.0.4
+%define release %mkrel 1
 
 Summary:	A general purpose calculator and math tool
 Name:		genius
 Version:	%{version}
 Release:	%{release}
-License:	GPL
+License:	GPLv3+
 Group:		Sciences/Mathematics
 URL:		http://www.jirka.org/genius.html
 Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 Source:		http://ftp.5z.com/pub/%{name}/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-0.5.5-plugin-libtool-flag.patch.bz2
+Patch1:		genius-1.0.4-fix-str-fmt.patch
 
 BuildRequires:	vte-devel
 BuildRequires:	libgnomeui2-devel
 BuildRequires:	libglade2.0-devel
-BuildRequires:	gtksourceview-devel
+BuildRequires:	libgtksourceview-2.0-devel
 BuildRequires:	gmp-devel
 BuildRequires:	readline-devel
+BuildRequires:	mpfr-devel
 BuildRequires:	termcap-devel
 BuildRequires:	flex
 BuildRequires:	bison
 BuildRequires:	scrollkeeper
 # the following stuffs are not necessary if not regenerating auto* stuff
 BuildRequires:	intltool
-BuildRequires:	automake1.8
-BuildRequires:	gnome-common
-Requires(post): shared-mime-info
-Requires(postun): shared-mime-info
-Requires(post): scrollkeeper
-Requires(postun): scrollkeeper
+BuildRequires:	automake
 Requires:	ghostscript
 
 %description
@@ -41,30 +37,15 @@ integers, complex numbers and matrixes.
 
 %prep
 %setup -q
-%patch0 -p1 -b .no-version
-
-# needed by patch0
-autoreconf --force --install
+%patch1 -p0
 
 %build
-%configure2_5x --enable-mpfr 
-%make
+%configure2_5x --enable-mpfr --disable-scrollkeeper --disable-update-mimedb 
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
-
-
-desktop-file-install --vendor="" \
-  --remove-category="Application" \
-  --remove-category="Scientific" \
-  --add-category="X-MandrivaLinux-MoreApplications-Sciences-Mathematics" \
-  --add-category="Science" \
-  --add-category="Math" \
-  --remove-key="Mime-Type" \
-  --add-mime-type="text/x-genius" \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
-
 
 %{find_lang} %{name} --with-gnome
 
@@ -73,8 +54,6 @@ desktop-file-install --vendor="" \
 rm -rf $RPM_BUILD_ROOT%{_includedir}
 rm -f $RPM_BUILD_ROOT%{_libdir}/genius/*.a \
       $RPM_BUILD_ROOT%{_libdir}/genius/*.la
-
-rm -rf %{buildroot}/%{_datadir}/mime/{XMLnamespaces,globs,magic,text,subclasses,aliases,mime.cache}  %{buildroot}/var/lib/scrollkeeper
 
 %if %mdkversion < 200900
 %post
@@ -110,5 +89,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/apps/gnome-genius.png
 %{_libdir}/%{name}
 %{_libexecdir}/genius-readline-helper-fifo
-%{_datadir}/applications/*
-
