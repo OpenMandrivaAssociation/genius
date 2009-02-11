@@ -1,4 +1,4 @@
-%define version 1.0.4
+%define version 1.0.5
 %define release %mkrel 1
 
 Summary:	A general purpose calculator and math tool
