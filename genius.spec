@@ -1,5 +1,5 @@
-%define version 1.0.6
-%define release %mkrel 3
+%define version 1.0.7
+%define release %mkrel 1
 
 Summary:	A general purpose calculator and math tool
 Name:		genius
