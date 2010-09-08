@@ -1,5 +1,5 @@
-%define version 1.0.9
-%define release %mkrel 2
+%define version 1.0.10
+%define release %mkrel 1
 
 Summary:	A general purpose calculator and math tool
 Name:		genius
@@ -11,6 +11,7 @@ URL:		http://www.jirka.org/genius.html
 Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 Source:		http://ftp.5z.com/pub/%{name}/%{name}-%{version}.tar.bz2
+Patch0:		genius-1.0.10-makefile.patch
 
 BuildRequires:	vte-devel
 BuildRequires:	libgnomeui2-devel
@@ -36,6 +37,9 @@ integers, complex numbers and matrixes.
 
 %prep
 %setup -q
+%apply_patches
+#gw patch0:
+automake
 
 %build
 %configure2_5x --enable-mpfr --disable-scrollkeeper --disable-update-mimedb 
