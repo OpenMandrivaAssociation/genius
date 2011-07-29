@@ -13,8 +13,7 @@ Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.xz
 
 BuildRequires:	vte-devel
-BuildRequires:	libgnomeui2-devel
-BuildRequires:	libglade2.0-devel
+BuildRequires:	gtk+2-devel
 BuildRequires:	libgtksourceview-2.0-devel
 BuildRequires:	gmp-devel
 BuildRequires:	readline-devel
@@ -23,6 +22,7 @@ BuildRequires:	termcap-devel
 BuildRequires:	flex
 BuildRequires:	bison
 BuildRequires:	scrollkeeper
+BuildRequires:	gnome-doc-utils
 # the following stuffs are not necessary if not regenerating auto* stuff
 BuildRequires:	intltool
 BuildRequires:	automake
