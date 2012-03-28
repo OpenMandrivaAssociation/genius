@@ -84,7 +84,6 @@ rm -rf %{buildroot}
 %{_datadir}/application-registry/*
 %{_datadir}/mime/packages/*
 %{_datadir}/mime-info/*
-%{_datadir}/omf/*
 %{_iconsdir}/hicolor/*/apps/gnome-genius.png
 %{_iconsdir}/hicolor/*/apps/genius-stock-plot.png
 %{_libdir}/%{name}
