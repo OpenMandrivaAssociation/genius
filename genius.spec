@@ -1,20 +1,16 @@
-%define version 1.0.15
-%define release %mkrel 1
-
 Summary:	A general purpose calculator and math tool
 Name:		genius
-Version:	%{version}
-Release:	%{release}
+Version:	1.0.15
+Release:	2
 License:	GPLv3+
 Group:		Sciences/Mathematics
 URL:		http://www.jirka.org/genius.html
-Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.xz
 
 BuildRequires:	vte-devel
 BuildRequires:	gtk+2-devel
-BuildRequires:	libgtksourceview-2.0-devel
+BuildRequires:	pkgconfig(gtksourceview-2.0)
 BuildRequires:	gmp-devel
 BuildRequires:	readline-devel
 BuildRequires:	mpfr-devel
@@ -22,7 +18,7 @@ BuildRequires:	termcap-devel
 BuildRequires:	flex
 BuildRequires:	bison
 BuildRequires:	scrollkeeper
-BuildRequires:	gnome-doc-utils
+BuildRequires:	pkgconfig(gnome-doc-utils)
 # the following stuffs are not necessary if not regenerating auto* stuff
 BuildRequires:	intltool
 BuildRequires:	automake
@@ -33,50 +29,35 @@ Genius is an advanced calculator and a mathematical programming language.
 It handles multiple precision floating point numbers, infinite precision
 integers, complex numbers and matrixes.
 
+%package devel
+Summary:	Files to develop genius plugins
+Requires:	%{name} = %{version}
+
+%description devel
+Genius is an advanced calculator and a mathematical programming language.
+It handles multiple precision floating point numbers, infinite precision
+integers, complex numbers and matrixes.
+
+This package contains developmend files and not required for runnind genius.
 
 %prep
 %setup -q
 %apply_patches
 
 %build
-%configure2_5x --enable-mpfr --disable-scrollkeeper --disable-update-mimedb 
-make
+%configure2_5x \
+	--enable-mpfr \
+	--disable-scrollkeeper \
+	--disable-update-mimedb \
+	--disable-static
+%make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 %{find_lang} %{name} --with-gnome
 
-# remove stuff not distributed
-# pointless to include header, no plugin has been developed in 4 yrs
-rm -rf %{buildroot}%{_includedir}
-rm -f %{buildroot}%{_libdir}/genius/*.a \
-      %{buildroot}%{_libdir}/genius/*.la
-
-%if %mdkversion < 200900
-%post
-%update_menus
-%update_mime_database
-%update_desktop_database
-%update_scrollkeeper
-%update_icon_cache hicolor
-%endif
-
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%clean_mime_database
-%clean_desktop_database
-%clean_scrollkeeper
-%clean_icon_cache hicolor
-%endif
-
-%clean
-rm -rf %{buildroot}
-
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc AUTHORS NEWS README
 %{_bindir}/*
 %{_datadir}/applications/*.desktop
@@ -88,3 +69,6 @@ rm -rf %{buildroot}
 %{_iconsdir}/hicolor/*/apps/genius-stock-plot.png
 %{_libdir}/%{name}
 %{_libexecdir}/genius-readline-helper-fifo
+
+%files devel
+%{_includedir}/*
