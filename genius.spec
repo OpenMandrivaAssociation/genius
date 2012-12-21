@@ -1,27 +1,27 @@
+%define url_ver %(echo %{version}|cut -d. -f1,2)
+
 Summary:	A general purpose calculator and math tool
 Name:		genius
-Version:	1.0.15
-Release:	2
+Version:	1.0.16
+Release:	1
 License:	GPLv3+
 Group:		Sciences/Mathematics
 URL:		http://www.jirka.org/genius.html
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 
-Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.xz
-
-BuildRequires:	vte-devel
-BuildRequires:	gtk+2-devel
-BuildRequires:	pkgconfig(gtksourceview-2.0)
-BuildRequires:	gmp-devel
-BuildRequires:	readline-devel
-BuildRequires:	mpfr-devel
-BuildRequires:	termcap-devel
-BuildRequires:	flex
 BuildRequires:	bison
-BuildRequires:	scrollkeeper
-BuildRequires:	pkgconfig(gnome-doc-utils)
-# the following stuffs are not necessary if not regenerating auto* stuff
+BuildRequires:	flex
 BuildRequires:	intltool
-BuildRequires:	automake
+BuildRequires:	radian
+BuildRequires:	gmp-devel
+BuildRequires:	mpfr-devel
+BuildRequires:	readline-devel
+BuildRequires:	termcap-devel
+BuildRequires:	pkgconfig(gnome-doc-utils)
+BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(gtksourceview-2.0)
+BuildRequires:	pkgconfig(vte)
+
 Requires:	ghostscript
 
 %description
@@ -72,3 +72,4 @@ This package contains developmend files and not required for runnind genius.
 
 %files devel
 %{_includedir}/*
+
