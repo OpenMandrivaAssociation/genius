@@ -12,7 +12,7 @@ Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{vers
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	intltool
-BuildRequires:	radian
+BuildRequires:	rarian
 BuildRequires:	gmp-devel
 BuildRequires:	mpfr-devel
 BuildRequires:	readline-devel
