@@ -2,13 +2,12 @@
 
 Summary:	A general purpose calculator and math tool
 Name:		genius
-Version:	1.0.16
+Version:	1.0.17
 Release:	1
 License:	GPLv3+
 Group:		Sciences/Mathematics
 URL:		http://www.jirka.org/genius.html
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
-
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	intltool
@@ -72,4 +71,5 @@ This package contains developmend files and not required for runnind genius.
 
 %files devel
 %{_includedir}/*
+
 
