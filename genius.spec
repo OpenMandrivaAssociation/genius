@@ -2,8 +2,8 @@
 
 Summary:	A general purpose calculator and math tool
 Name:		genius
-Version:	1.0.17
-Release:	2
+Version:	1.0.24
+Release:	1
 License:	GPLv3+
 Group:		Sciences/Mathematics
 URL:		http://www.jirka.org/genius.html
