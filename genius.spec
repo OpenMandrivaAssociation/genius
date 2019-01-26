@@ -20,6 +20,12 @@ BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(gtksourceview-2.0)
 BuildRequires:	pkgconfig(vte)
+BuildRequires:	pkgconfig(glib-2.0) >= 2.12.0
+BuildRequires:	pkgconfig(gmodule-2.0) >= 2.12.0
+BuildRequires:	pkgconfig(gio-2.0) >= 2.16.0
+BuildRequires:	scrollkeeper
+BuildRequires:	automake
+BuildRequires:	pkgconfig(tinfo)
 
 Requires:	ghostscript
 
@@ -44,16 +50,12 @@ This package contains developmend files and not required for runnind genius.
 %apply_patches
 
 %build
-%configure2_5x \
-	--enable-mpfr \
-	--disable-scrollkeeper \
-	--disable-update-mimedb \
-	--disable-static \
-	--ignore-theme-index
-%make
+%configure2_5x --disable-static --disable-scrollkeeper --disable-update-mimedb
+%make_build
 
 %install
-%makeinstall_std
+%make_install
+
 
 %{find_lang} %{name} --with-gnome
 
