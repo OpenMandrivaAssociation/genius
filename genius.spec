@@ -49,7 +49,7 @@ This package contains developmend files and not required for runnind genius.
 	--disable-scrollkeeper \
 	--disable-update-mimedb \
 	--disable-static \
-	--ignore-theme-index parameter
+	--ignore-theme-index
 %make
 
 %install
