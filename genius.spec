@@ -48,7 +48,8 @@ This package contains developmend files and not required for runnind genius.
 	--enable-mpfr \
 	--disable-scrollkeeper \
 	--disable-update-mimedb \
-	--disable-static
+	--disable-static \
+	--ignore-theme-index parameter
 %make
 
 %install
