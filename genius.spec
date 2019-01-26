@@ -15,7 +15,7 @@ BuildRequires:	rarian
 BuildRequires:	gmp-devel
 BuildRequires:	mpfr-devel
 BuildRequires:	readline-devel
-BuildRequires:	termcap-devel
+#BuildRequires:	termcap-devel
 BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(gtksourceview-2.0)
