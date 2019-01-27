@@ -25,7 +25,6 @@ BuildRequires:	pkgconfig(gmodule-2.0) >= 2.12.0
 BuildRequires:	pkgconfig(gio-2.0) >= 2.16.0
 BuildRequires:	scrollkeeper
 BuildRequires:	automake
-BuildRequires:	pkgconfig(tinfo)
 
 Requires:	ghostscript
 
