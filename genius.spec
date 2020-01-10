@@ -41,7 +41,7 @@ This package contains developmend files and not required for runnind genius.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 %configure2_5x \
