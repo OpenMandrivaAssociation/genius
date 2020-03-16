@@ -2,8 +2,8 @@
 
 Summary:	A general purpose calculator and math tool
 Name:		genius
-Version:	1.0.17
-Release:	2
+Version:	1.0.25
+Release:	1
 License:	GPLv3+
 Group:		Sciences/Mathematics
 URL:		http://www.jirka.org/genius.html
@@ -11,17 +11,20 @@ Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{vers
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	intltool
-BuildRequires:	rarian
+BuildRequires:	pkgconfig(amtk-5)
+BuildRequires:	pkgconfig(glib-2.0) >= 2.12.0
+BuildRequires:	pkgconfig(gmodule-2.0) >= 2.12.0
+BuildRequires:	pkgconfig(gio-2.0) >= 2.16.0
+BuildRequires:	pkgconfig(gtk+-3.0) >= 2.18.0
+BuildRequires:	pkgconfig(vte-2.91)
+BuildRequires:	pkgconfig(gtksourceview-4)
 BuildRequires:	gmp-devel
-BuildRequires:	mpfr-devel
-BuildRequires:	readline-devel
-BuildRequires:	termcap-devel
-BuildRequires:	pkgconfig(gnome-doc-utils)
-BuildRequires:	pkgconfig(gtk+-2.0)
-BuildRequires:	pkgconfig(gtksourceview-2.0)
-BuildRequires:	pkgconfig(vte)
-
+BuildRequires:	pkgconfig(readline)
+BuildRequires:	pkgconfig(mpfr)
+BuildRequires:	pkgconfig(tinfo)
+BuildRequires:	automake
 Requires:	ghostscript
+
 
 %description
 Genius is an advanced calculator and a mathematical programming language.
@@ -44,15 +47,15 @@ This package contains developmend files and not required for runnind genius.
 %autopatch -p1
 
 %build
-%configure2_5x \
+%configure \
 	--enable-mpfr \
 	--disable-scrollkeeper \
 	--disable-update-mimedb \
 	--disable-static
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %{find_lang} %{name} --with-gnome
 
