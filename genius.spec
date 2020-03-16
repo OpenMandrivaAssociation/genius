@@ -21,7 +21,7 @@ BuildRequires:	pkgconfig(gtksourceview-4)
 BuildRequires:	gmp-devel
 BuildRequires:	pkgconfig(readline)
 BuildRequires:	pkgconfig(mpfr)
-BuildRequires:	pkgconfig(tinfo)
+#BuildRequires:	pkgconfig(tinfo)
 BuildRequires:	automake
 Requires:	ghostscript
 
