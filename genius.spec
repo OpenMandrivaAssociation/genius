@@ -24,6 +24,7 @@ BuildRequires:	pkgconfig(mpfr)
 #BuildRequires:	pkgconfig(tinfo)
 BuildRequires:	automake
 Requires:	ghostscript
+Requires:	gtk-update-icon-cache
 
 
 %description
