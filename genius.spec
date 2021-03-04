@@ -2,7 +2,7 @@
 
 Summary:	A general purpose calculator and math tool
 Name:		genius
-Version:	1.0.25
+Version:	1.0.26
 Release:	1
 License:	GPLv3+
 Group:		Sciences/Mathematics
