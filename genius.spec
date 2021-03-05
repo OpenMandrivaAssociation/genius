@@ -70,6 +70,7 @@ This package contains developmend files and not required for runnind genius.
 %{_datadir}/mime-info/*
 %{_iconsdir}/hicolor/*/apps/gnome-genius.png
 %{_iconsdir}/hicolor/*/apps/genius-stock-plot.png
+%{_iconsdir}/hicolor/scalable/apps/gnome-genius.svg
 %{_libdir}/%{name}
 %{_libexecdir}/genius-readline-helper-fifo
 
