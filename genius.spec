@@ -3,10 +3,10 @@
 Summary:	A general purpose calculator and math tool
 Name:		genius
 Version:	1.0.27
-Release:	7
+Release:	8
 License:	GPLv3+
 Group:		Sciences/Mathematics
-URL:		http://www.jirka.org/genius.html
+URL:		https://www.jirka.org/genius.html
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 BuildRequires:	bison
 BuildRequires:	flex
