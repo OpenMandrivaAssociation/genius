@@ -2,8 +2,8 @@
 
 Summary:	A general purpose calculator and math tool
 Name:		genius
-Version:	1.0.27
-Release:	10
+Version:	1.0.29
+Release:	1
 License:	GPLv3+
 Group:		Sciences/Mathematics
 URL:		https://www.jirka.org/genius.html
@@ -14,7 +14,7 @@ BuildRequires:	slibtool
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	intltool
-BuildRequires:	pkgconfig(amtk-5)
+BuildRequires:	pkgconfig(libgedit-amtk-5)
 BuildRequires:	pkgconfig(glib-2.0) >= 2.12.0
 BuildRequires:	pkgconfig(gmodule-2.0) >= 2.12.0
 BuildRequires:	pkgconfig(gio-2.0) >= 2.16.0
