@@ -8,6 +8,7 @@ License:	GPLv3+
 Group:		Sciences/Mathematics
 URL:		https://www.jirka.org/genius.html
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+BuildRequires:	make
 BuildRequires:	autoconf
 BuildRequires:	libtool-base
 BuildRequires:	slibtool
