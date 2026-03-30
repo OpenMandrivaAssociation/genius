@@ -11,7 +11,7 @@ Source0:	https://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{ve
 BuildRequires:	make
 BuildRequires:	autoconf
 BuildRequires:	libtool-base
-BuildRequires:	slibtool
+BuildRequires:	libtool
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	intltool
@@ -52,11 +52,21 @@ This package contains developmend files and not required for runnind genius.
 %autopatch -p1
 
 %build
+export LDFLAGS="${LDFLAGS//-Wl,--no-undefined/}"
+
+ln -sf %{_bindir}/libtoolize slibtoolize
+export PATH=$PWD:$PATH
+export LIBTOOLIZE=%{_bindir}/libtoolize
+export LIBTOOL=%{_bindir}/libtool
 %configure \
 	--enable-mpfr \
 	--disable-scrollkeeper \
 	--disable-update-mimedb \
 	--disable-static
+	
+sed -i 's/-Wl,--no-undefined//g' src/Makefile
+sed -i 's/-no-undefined//g' src/Makefile
+
 %make_build
 
 %install
