@@ -52,6 +52,8 @@ This package contains developmend files and not required for runnind genius.
 %autopatch -p1
 
 %build
+export LDFLAGS="${LDFLAGS//-Wl,--no-undefined/}"
+
 ln -sf %{_bindir}/libtoolize slibtoolize
 export PATH=$PWD:$PATH
 export LIBTOOLIZE=%{_bindir}/libtoolize
