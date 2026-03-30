@@ -63,6 +63,10 @@ export LIBTOOL=%{_bindir}/libtool
 	--disable-scrollkeeper \
 	--disable-update-mimedb \
 	--disable-static
+	
+sed -i 's/-Wl,--no-undefined//g' src/Makefile
+sed -i 's/-no-undefined//g' src/Makefile
+
 %make_build
 
 %install
