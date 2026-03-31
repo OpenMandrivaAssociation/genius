@@ -3,15 +3,14 @@
 Summary:	A general purpose calculator and math tool
 Name:		genius
 Version:	1.0.29
-Release:	1
+Release:	2
 License:	GPLv3+
 Group:		Sciences/Mathematics
 URL:		https://www.jirka.org/genius.html
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 BuildRequires:	make
 BuildRequires:	autoconf
-BuildRequires:	libtool-base
-BuildRequires:	libtool
+BuildRequires:	slibtool
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	intltool
@@ -53,11 +52,6 @@ This package contains developmend files and not required for runnind genius.
 
 %build
 export LDFLAGS="${LDFLAGS//-Wl,--no-undefined/}"
-
-ln -sf %{_bindir}/libtoolize slibtoolize
-export PATH=$PWD:$PATH
-export LIBTOOLIZE=%{_bindir}/libtoolize
-export LIBTOOL=%{_bindir}/libtool
 %configure \
 	--enable-mpfr \
 	--disable-scrollkeeper \
@@ -67,10 +61,10 @@ export LIBTOOL=%{_bindir}/libtool
 sed -i 's/-Wl,--no-undefined//g' src/Makefile
 sed -i 's/-no-undefined//g' src/Makefile
 
-%make_build
+%make_build AR=llvm-ar RANLIB=llvm-ranlib LIBTOOL=rclibtool
 
 %install
-%make_install
+%make_install AR=llvm-ar RANLIB=llvm-ranlib LIBTOOL=rclibtool
 
 %{find_lang} %{name} --with-gnome
 
